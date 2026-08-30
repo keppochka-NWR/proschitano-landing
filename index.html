@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Просчитано. Просчёты мебели для дизайнеров</title>
+<meta name="description" content="Загрузите проект и получите до 5 сравнимых просчётов от мебельных производств за 3 дня. Без обзвона и откатов. Нижний Новгород.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23fdfcf9'/><path d='M8 22 L14 10 L18 18 L21 13 L24 22' stroke='%232244bb' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdfcf9; --ink:#191b21; --muted:#5d616c; --line:#e5e2da;
+    --accent:#2244bb; --accent-soft:#eef1fb; --card:#ffffff;
+    --r:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  [hidden]{display:none !important}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;
+       font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Tenor Sans",serif;font-weight:400;line-height:1.2;letter-spacing:.005em}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  section{padding:84px 0}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+  header{border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 92%,transparent);
+         backdrop-filter:blur(10px);position:sticky;top:0;z-index:40}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:"Tenor Sans",serif;font-size:20px;text-decoration:none;letter-spacing:.02em}
+  .logo b{color:var(--accent);font-weight:400}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+       font-family:"Manrope",sans-serif;font-weight:600;font-size:16px;
+       padding:14px 26px;border-radius:999px;text-decoration:none;border:none;cursor:pointer;
+       transition:transform .16s cubic-bezier(.2,.9,.3,1.4),background .2s}
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#1a37a0}
+  .btn-sm{padding:10px 20px;font-size:15px}
+
+  /* hero: асимметрия текст + «таблица-сравнение» как визуал */
+  .hero{padding:76px 0 88px}
+  @media(min-width:920px){.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}}
+  .hero h1{font-size:clamp(32px,4.6vw,48px);margin-bottom:20px;text-wrap:balance}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p{color:var(--muted);font-size:clamp(16px,1.9vw,18px);max-width:44ch;margin-bottom:30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:14px;color:var(--muted)}
+
+  .demo{margin-top:48px}
+  @media(min-width:920px){.demo{margin-top:0}}
+  .demo-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+             box-shadow:0 18px 50px rgba(25,27,33,.07);overflow:hidden}
+  .demo-head{padding:14px 18px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--muted);
+             display:flex;justify-content:space-between;gap:10px}
+  .demo table{width:100%;border-collapse:collapse;font-size:14.5px}
+  .demo th{font-weight:600;text-align:left;padding:11px 14px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+  .demo td{padding:11px 14px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .demo td:first-child{font-weight:600}
+  .tag{font-size:12px;border-radius:999px;padding:3px 10px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+  .tag.warn{background:#faf0e6;color:#b0641e}
+  .demo-foot{padding:12px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+  /* боль: две колонки-контраст */
+  .pain{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pain h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:44px;max-width:24ch}
+  .vs{display:grid;gap:16px}
+  @media(min-width:820px){.vs{grid-template-columns:1fr 1fr}}
+  .vs-col{border:1px solid var(--line);border-radius:var(--r);padding:28px;background:var(--bg)}
+  .vs-col.now{border-style:dashed}
+  .vs-col.new{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:var(--accent-soft)}
+  .vs-col h3{font-size:19px;margin-bottom:16px}
+  .vs-col ul{list-style:none;display:flex;flex-direction:column;gap:11px;color:var(--muted);font-size:15.5px}
+  .vs-col li{padding-left:26px;position:relative}
+  .vs-col.now li::before{content:"✕";position:absolute;left:0;color:#b0641e}
+  .vs-col.new li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+  .vs-col.new li{color:var(--ink)}
+
+  /* шаги: горизонтальная лента */
+  .how h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:44px}
+  .steps{display:grid;gap:14px}
+  @media(min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
+  .step{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:var(--card)}
+  .step .n{font-family:"Tenor Sans",serif;font-size:15px;color:var(--accent);letter-spacing:.1em;margin-bottom:12px}
+  .step h3{font-size:19px;margin-bottom:10px}
+  .step p{color:var(--muted);font-size:15px}
+
+  /* форма заявки */
+  .apply{background:var(--ink);color:#f4f2ec}
+  .apply h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:14px;color:#fff}
+  .apply .lead{color:#b9bcc6;margin-bottom:36px;max-width:52ch}
+  .apply .lead b{color:#fff;font-weight:600}
+  form{display:grid;gap:16px;max-width:560px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field label{font-size:14px;color:#b9bcc6}
+  .field input,.field select,.field textarea{
+    background:#23252d;border:1px solid #3a3d48;border-radius:10px;
+    padding:13px 15px;color:#fff;font-family:inherit;font-size:16px}
+  .field input::placeholder,.field textarea::placeholder{color:#787d8a}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+  .apply .btn-primary{margin-top:6px;justify-self:start}
+  .form-note{font-size:13.5px;color:#8a8e9a}
+  .form-ok{background:#1e2a1f;border:1px solid #3d6b43;color:#a7d9ad;border-radius:10px;padding:16px}
+
+  /* цехам */
+  .makers .wrap{display:grid;gap:28px}
+  @media(min-width:880px){.makers .wrap{grid-template-columns:1.1fr .9fr;align-items:center}}
+  .makers h2{font-size:clamp(24px,3vw,32px);margin-bottom:14px}
+  .makers p{color:var(--muted);max-width:50ch}
+  .makers p+p{margin-top:10px}
+  .makers b{color:var(--ink)}
+  .maker-card{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:var(--card)}
+  .maker-card h3{font-size:17px;margin-bottom:12px}
+  .maker-card ul{list-style:none;display:flex;flex-direction:column;gap:9px;color:var(--muted);font-size:15px}
+  .maker-card li{padding-left:24px;position:relative}
+  .maker-card li::before{content:"·";position:absolute;left:6px;color:var(--accent);font-weight:800}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between}
+
+  @media(prefers-reduced-motion:no-preference){
+    html.js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    html.js .rv.on{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">Про<b>считано</b></a>
+    <a class="btn btn-primary btn-sm" href="#apply">Получить просчёты</a>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Мебель <em>просчитана</em>. Без обзвона цехов</h1>
+      <p>Для дизайнеров интерьера. Загружаете проект и анкету, а мы собираем до 5 предложений производств Нижнего Новгорода и приводим их к одной сравнимой таблице. Без откатов.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#apply">Первый просчёт бесплатно</a>
+        <span class="hero-note">дальше 400 ₽ за запрос</span>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-card" aria-label="Пример сводной таблицы просчётов">
+        <div class="demo-head"><span>Кухня, эмаль, 3,2 м: сводка</span><span>3 ответа из 5</span></div>
+        <div style="overflow-x:auto">
+        <table>
+          <tr><th>Цех</th><th>Цена</th><th>Срок</th><th>Фурнитура</th><th></th></tr>
+          <tr><td>Цех А</td><td>317 400 ₽</td><td>30 дн</td><td>Blum</td><td><span class="tag">всё включено</span></td></tr>
+          <tr><td>Цех Б</td><td>289 000 ₽</td><td>45 дн</td><td>GTV</td><td><span class="tag warn">без столешницы</span></td></tr>
+          <tr><td>Цех В</td><td>301 250 ₽</td><td>35 дн</td><td>Blum</td><td><span class="tag">всё включено</span></td></tr>
+        </table>
+        </div>
+        <div class="demo-foot">Разные «включено» выравниваем и помечаем: сравниваете честное с честным.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="pain">
+  <div class="wrap">
+    <h2 class="rv">Как это выглядит сейчас и как будет</h2>
+    <div class="vs">
+      <div class="vs-col now rv">
+        <h3>Обзвон руками</h3>
+        <ul>
+          <li>Неделя переписок с десятком цехов</li>
+          <li>Половина не отвечает вовсе</li>
+          <li>Каждый считает в своём формате: сравнить нельзя</li>
+          <li>«Проверенный» цех: тот, что платит комиссию, а не тот, что лучше</li>
+          <li>У новичка нет и этого, только 2ГИС наугад</li>
+        </ul>
+      </div>
+      <div class="vs-col new rv">
+        <h3>Через «Просчитано»</h3>
+        <ul>
+          <li>Одна анкета, до 5 предложений</li>
+          <li>Сводка в среднем за 3 дня</li>
+          <li>Одна таблица: цена, срок, материалы, что включено</li>
+          <li>Комиссия только за подбор: 400 ₽, не процент со сделки</li>
+          <li>Дальше работаете с цехом напрямую</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="rv">Три шага</h2>
+    <div class="steps">
+      <div class="step rv">
+        <div class="n">01</div>
+        <h3>Загружаете проект</h3>
+        <p>PDF или картинки + анкета: фасады, корпус, столешница, фурнитура. Анкету составляло производство, в ней только то, что нужно для честной цифры.</p>
+      </div>
+      <div class="step rv">
+        <div class="n">02</div>
+        <h3>Цеха считают</h3>
+        <p>Заявка уходит производствам, подходящим по типу изделия и загрузке. Каждый отвечает как привык, формат не ваша забота.</p>
+      </div>
+      <div class="step rv">
+        <div class="n">03</div>
+        <h3>Получаете сводку</h3>
+        <p>Все предложения в одной таблице, расхождения помечены. Контакты цехов остаются вам, работаете напрямую, мы в сделке не участвуем.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <div class="wrap">
+    <h2 class="rv">Попробуйте на своём проекте</h2>
+    <p class="lead rv">Мы запускаемся в Нижнем Новгороде и первым дизайнерам делаем просчёт <b>бесплатно</b>. Оставьте контакты, и мы свяжемся в течение дня, пришлём анкету под ваш проект.</p>
+    <form id="f" class="rv" action="https://formsubmit.co/keppochka@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Заявка с лендинга Просчитано">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+      <div class="field">
+        <label for="nm">Как вас зовут</label>
+        <input id="nm" name="Имя" type="text" placeholder="Анна" required>
+      </div>
+      <div class="field">
+        <label for="ct">Телефон или Telegram</label>
+        <input id="ct" name="Контакт" type="text" placeholder="+7 9xx xxx-xx-xx или @nick" required>
+      </div>
+      <div class="field">
+        <label for="pj">Что просчитать</label>
+        <select id="pj" name="Проект">
+          <option>Кухня</option>
+          <option>Шкаф / гардеробная</option>
+          <option>Несколько изделий по проекту</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit">Получить бесплатный просчёт</button>
+      <p class="form-note">Отправляя форму, вы соглашаетесь на обработку контактов для связи по заявке. Ничего лишнего не шлём.</p>
+    </form>
+    <div class="form-ok" id="ok" hidden>Заявка ушла. Свяжемся в течение рабочего дня, посмотрите Telegram или телефон.</div>
+  </div>
+</section>
+
+<section class="makers">
+  <div class="wrap">
+    <div class="rv">
+      <h2>Вы мебельное производство?</h2>
+      <p><b>Подключение бесплатное.</b> Мы присылаем заявки с полной спецификацией: размеры, материалы, фурнитура. Не «посчитайте кухню по фото», а данные, по которым конструктор считает за час.</p>
+      <p>Отвечаете как привыкли: текстом, файлом, голосом. Приведение к формату берём на себя. Никакого процента с ваших сделок.</p>
+    </div>
+    <div class="maker-card rv">
+      <h3>Что понадобится</h3>
+      <ul>
+        <li>Типы изделий и материалы, с которыми работаете</li>
+        <li>Минимальный чек и текущая загрузка</li>
+        <li>Готовность отвечать на заявки за 2-3 дня</li>
+      </ul>
+      <p style="margin-top:16px;font-size:15px;color:var(--muted)">Напишите в форме выше с пометкой «производство», и мы расскажем детали.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>«Просчитано» · Нижний Новгород · 2026</span>
+    <span>Пилотный запуск: сервис работает в ручном режиме</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  var all=document.querySelectorAll(".rv");
+  function showAll(){all.forEach(function(el){el.classList.add("on")})}
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches||!("IntersectionObserver" in window)){showAll();return}
+  var fired=false;
+  var io=new IntersectionObserver(function(es){
+    fired=true;
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}});
+  },{threshold:.15,rootMargin:"0px 0px -30px 0px"});
+  all.forEach(function(el){io.observe(el)});
+  setTimeout(function(){if(!fired){io.disconnect();showAll()}},2500);
+})();
+</script>
+
+</body>
+</html>

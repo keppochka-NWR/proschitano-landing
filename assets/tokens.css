@@ -1,0 +1,29 @@
+/* Просчитано: единая палитра. Подключается первой на всех страницах.
+   Направление: тёплая эклектика, кремовая бумага, глубокий изумруд, латунь. */
+:root{
+  --bg:#f6f2ea;          /* тёплый кремовый фон */
+  --bg-deep:#efe9dd;     /* фон вложенных секций */
+  --card:#fffdf8;
+  --ink:#1a1815;         /* основной текст */
+  --muted:#6b6459;
+  --line:#e3dcd0;
+  --line-soft:#efe9de;
+
+  --accent:#235b4e;      /* изумруд: кнопки, ссылки, акценты */
+  --accent-deep:#17423a;
+  --accent-soft:#e6efeb;
+  --brass:#a87c3f;       /* латунь: нумерация, тонкие детали */
+  --brass-soft:#f5eeddcc;
+
+  --ok:#2f6b45; --ok-soft:#e7f1ea;
+  --warn:#a4611f; --warn-soft:#f8efe2;
+  --danger:#a63b3b; --danger-soft:#f7e9e7;
+
+  --r:14px;
+  --r-lg:22px;
+  --shadow:0 14px 40px rgba(26,24,21,.08);
+  --shadow-lg:0 26px 70px rgba(26,24,21,.13);
+
+  --serif:"Cormorant Garamond","Tenor Sans",Georgia,serif;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
